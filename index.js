@@ -55,7 +55,7 @@ function weathercast(lat, lon) {
         var cityStlNoontemp1 = document.createElement("h3");
         var cityStlNoontemp2 = document.createElement("h3");
         var position = document.getElementById("Forecast");
-        forecastCityName.textContent = cityform + "," + stateform;
+        forecastCityName.textContent = cityform + " , " + stateform;
         cityStlNoontemp1.textContent =
           "One Day Forecast " + data.list[2].main.temp;
         cityStlNoontemp2.textContent =
@@ -96,3 +96,12 @@ function weathercast(lat, lon) {
   getWeather();
   getWeatherForecast();
 }
+
+function currentTime() {
+  var crtTime = document.createElement("h3");
+  var today = new Date();
+  crtTime.textContent = today.toDateString();
+  var position = document.querySelector("h1");
+  position.appendChild(crtTime);
+}
+currentTime();
