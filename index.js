@@ -7,12 +7,13 @@ let stateform;
 let getLatLon;
 let lat;
 let lon;
+// This click get the Lat Lon from geo, passes info to and calls main function "weathercast" to populate page.
 ElSubmit.addEventListener("click", function (event) {
   event.preventDefault();
   cityform = Elcityform.value;
   stateform = Elstateform.value;
 
-  // Lat Lon from city state
+  // Lat Lon from city state, calls main func to populate the page
   getLatLon =
     "http://api.openweathermap.org/geo/1.0/direct?q=" +
     cityform +
@@ -29,13 +30,13 @@ ElSubmit.addEventListener("click", function (event) {
         console.log(data);
         lat = data[0].lat;
         lon = data[0].lon;
-        weatherforecast(lat, lon);
+        weathercast(lat, lon);
       });
   }
   getLatLonFunc();
   console.log(lat);
 });
-function weatherforecast(lat, lon) {
+function weathercast(lat, lon) {
   let exStlForecastWeather =
     "http://api.openweathermap.org/data/2.5/forecast?lat=" +
     lat +
@@ -50,13 +51,16 @@ function weatherforecast(lat, lon) {
       })
       .then(function (data) {
         console.log(data);
+        var forecastCityName = document.createElement("h3");
         var cityStlNoontemp1 = document.createElement("h3");
         var cityStlNoontemp2 = document.createElement("h3");
         var position = document.getElementById("Forecast");
+        forecastCityName.textContent = cityform + "," + stateform;
         cityStlNoontemp1.textContent =
           "One Day Forecast " + data.list[2].main.temp;
         cityStlNoontemp2.textContent =
           "Two Day Forecast " + data.list[9].main.temp;
+        position.appendChild(forecastCityName);
         position.appendChild(cityStlNoontemp1);
         position.appendChild(cityStlNoontemp2);
       });
@@ -64,8 +68,11 @@ function weatherforecast(lat, lon) {
 
   // current weather
   let exStlWeather =
-    "http://api.openweathermap.org/data/2.5/weather?q=63116,US&APPID=5082e4062959ff23200dac304c5cf020";
-
+    "https://api.openweathermap.org/data/2.5/weather?lat=" +
+    lat +
+    "&lon=" +
+    lon +
+    "&appid=5082e4062959ff23200dac304c5cf020";
   function getWeather() {
     fetch(exStlWeather)
       .then(function (response) {
