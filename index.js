@@ -7,13 +7,13 @@ let stateform;
 let getLatLon;
 let lat;
 let lon;
-// This click get the Lat Lon from geo, passes info to and calls main function "weathercast" to populate page.
+// This 'click' gets the Lat Lon from geo, passes info to and calls main function "weathercast" to populate page.
 ElSubmit.addEventListener("click", function (event) {
   event.preventDefault();
   cityform = Elcityform.value;
   stateform = Elstateform.value;
 
-  // Lat Lon from city state, calls main func to populate the page
+  // Lat Lon from city state, calls main func "weathercast" to populate the page
   getLatLon =
     "http://api.openweathermap.org/geo/1.0/direct?q=" +
     cityform +
@@ -36,8 +36,9 @@ ElSubmit.addEventListener("click", function (event) {
   getLatLonFunc();
   console.log(lat);
 });
+// Main Function to populate page, variable followed by its fetch function
 function weathercast(lat, lon) {
-  let exStlForecastWeather =
+  let ForecastWeather =
     "http://api.openweathermap.org/data/2.5/forecast?lat=" +
     lat +
     "&lon=" +
@@ -45,52 +46,58 @@ function weathercast(lat, lon) {
     "&appid=5082e4062959ff23200dac304c5cf020";
 
   function getWeatherForecast() {
-    fetch(exStlForecastWeather)
+    fetch(ForecastWeather)
       .then(function (response) {
         return response.json();
       })
       .then(function (data) {
         console.log(data);
         var forecastCityName = document.createElement("h3");
-        var cityStlNoontemp1 = document.createElement("h3");
-        var cityStlNoontemp2 = document.createElement("h3");
+        var cityForecastNoontemp1 = document.createElement("p");
+        var cityForecastNoontemp2 = document.createElement("p");
         var position = document.getElementById("Forecast");
         forecastCityName.textContent = cityform + " , " + stateform;
-        cityStlNoontemp1.textContent =
-          "One Day Forecast " + data.list[2].main.temp;
-        cityStlNoontemp2.textContent =
-          "Two Day Forecast " + data.list[9].main.temp;
+        cityForecastNoontemp1.textContent =
+          "One Day Out Forecast: " + data.list[2].main.temp;
+        cityForecastNoontemp2.textContent =
+          "Two Day Out Forecast: " + data.list[9].main.temp;
         position.appendChild(forecastCityName);
-        position.appendChild(cityStlNoontemp1);
-        position.appendChild(cityStlNoontemp2);
+        position.appendChild(cityForecastNoontemp1);
+        position.appendChild(cityForecastNoontemp2);
       });
   }
 
   // current weather
-  let exStlWeather =
+  let currentWeather =
     "https://api.openweathermap.org/data/2.5/weather?lat=" +
     lat +
     "&lon=" +
     lon +
     "&appid=5082e4062959ff23200dac304c5cf020";
   function getWeather() {
-    fetch(exStlWeather)
+    fetch(currentWeather)
       .then(function (response) {
         return response.json();
       })
       .then(function (data) {
         console.log(data);
-        var cityStl = document.createElement("h3");
-        var weatherStl = document.createElement("p");
-        var tempStl = document.createElement("p");
+        var cityCurrent = document.createElement("h3");
+        var weatherCurrent = document.createElement("p");
+        var tempCurrent = document.createElement("p");
+        var humidityCurrent = document.createElement("p");
+        var windspeedCurrent = document.createElement("p");
 
         var position = document.getElementById("Current");
-        cityStl.textContent = data.name;
-        weatherStl.textContent = data.weather[0].main;
-        tempStl.textContent = data.main.temp;
-        position.appendChild(cityStl);
-        position.appendChild(weatherStl);
-        position.appendChild(tempStl);
+        cityCurrent.textContent = data.name;
+        weatherCurrent.textContent = "Conditions: " + data.weather[0].main;
+        tempCurrent.textContent = "Temperature: " + data.main.temp;
+        humidityCurrent.textContent = "Humidity: " + data.main.humidity;
+        windspeedCurrent.textContent = "WindSpeed: " + data.wind.speed;
+        position.appendChild(cityCurrent);
+        position.appendChild(weatherCurrent);
+        position.appendChild(tempCurrent);
+        position.appendChild(windspeedCurrent);
+        position.appendChild(humidityCurrent);
       });
   }
   getWeather();
