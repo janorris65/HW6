@@ -7,11 +7,14 @@ let stateform;
 let getLatLon;
 let lat;
 let lon;
+const citylist = [];
+let something;
 // This 'click' gets the Lat Lon from geo, passes info to and calls main function "weathercast" to populate page.
 ElSubmit.addEventListener("click", function (event) {
   event.preventDefault();
   cityform = Elcityform.value;
   stateform = Elstateform.value;
+  saveCast(cityform, stateform);
 
   // Lat Lon from city state, calls main func "weathercast" to populate the page
   getLatLon =
@@ -34,7 +37,6 @@ ElSubmit.addEventListener("click", function (event) {
       });
   }
   getLatLonFunc();
-  console.log(lat);
 });
 // Main Function to populate page, variable followed by its fetch function
 function weathercast(lat, lon) {
@@ -184,6 +186,15 @@ function weathercast(lat, lon) {
   }
   getWeather();
   getWeatherForecast();
+}
+// Saved Cities Function
+function saveCast(city, state) {
+  let cityStatePair = [city, state];
+  citylist.push(cityStatePair);
+  console.log(citylist);
+  localStorage.setItem("list", citylist);
+  something = localStorage.getItem("list");
+  console.log(something);
 }
 
 function currentTime() {
