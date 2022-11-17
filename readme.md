@@ -18,7 +18,7 @@ lat +
 lon +
 "&appid=5082e4062959ff23200dac304c5cf020";
 
-the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
+the date 5 days, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
 
 ## current
 
