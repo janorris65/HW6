@@ -2,6 +2,7 @@
 let Elcityform = document.getElementById("city");
 let Elstateform = document.getElementById("state");
 let ElSubmit = document.getElementById("submit");
+let clearbutton = document.getElementById("clearbutton");
 let cityform;
 let stateform;
 let getLatLon;
@@ -9,7 +10,7 @@ let lat;
 let lon;
 const citylist = [];
 let something;
-// This 'click' gets the Lat Lon from geo, passes info to and calls main function "weathercast" to populate page.
+// This 'click' gets the Lat Lon from geo, passes info to and calls main function "weathercast" to populate page. Initiates saveCast
 ElSubmit.addEventListener("click", function (event) {
   event.preventDefault();
   cityform = Elcityform.value;
@@ -187,14 +188,15 @@ function weathercast(lat, lon) {
   getWeather();
   getWeatherForecast();
 }
-// Saved Cities Function
+// Saved Cities Function; uses object method with JSON
 function saveCast(city, state) {
-  let cityStatePair = [city, state];
-  citylist.push(cityStatePair);
+  const fakeLocation = {
+    fakeCity: city,
+    fakeState: state,
+  };
+  citylist.push(fakeLocation);
   console.log(citylist);
-  localStorage.setItem("list", citylist);
-  something = localStorage.getItem("list");
-  console.log(something);
+  localStorage.setItem("list", JSON.stringify(citylist));
 }
 
 function currentTime() {
@@ -205,3 +207,23 @@ function currentTime() {
   position.appendChild(crtTime);
 }
 currentTime();
+
+something = localStorage.getItem("list");
+let somethingelse = JSON.parse(something);
+
+function displaySaveCast() {
+  somethingelse.forEach(function (element) {
+    var searchedCity = document.createElement("button");
+    searchedCity.type = "button";
+    searchedCity.id = "citybutton";
+    searchedCity.textContent = element.fakeCity + element.fakeState;
+    var position = document.getElementById("savedcity");
+    position.appendChild(searchedCity);
+    console.log(element);
+  });
+}
+displaySaveCast();
+clearbutton.addEventListener("click", function (event) {
+  localStorage.removeItem("list");
+  location.reload();
+});
