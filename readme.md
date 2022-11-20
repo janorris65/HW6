@@ -27,3 +27,9 @@ http://api.openweathermap.org/data/2.5/weather?q=63116,US&APPID=5082e4062959ff23
 "https://api.openweathermap.org/data/2.5/weather?lat="+ lat +"&lon="+ lon + "&appid=5082e4062959ff23200dac304c5cf020";
 
 city name, the date, an icon representation of weather conditions, the temperature, the humidity, and the wind speed
+
+var cityForecastdate24 = data.list[6].dt_txt;
+var cityForecastdate48 = data.list[14].dt_txt;
+var cityForecastdate72 = data.list[22].dt_txt;
+var cityForecastdate96 = data.list[30].dt_txt;
+var cityForecastdate120 = data.list[38].dt_txt;
