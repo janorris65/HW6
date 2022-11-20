@@ -47,7 +47,7 @@ function weathercast(lat, lon) {
     "&lon=" +
     lon +
     "&appid=5082e4062959ff23200dac304c5cf020";
-
+  // function call the forecast
   function getWeatherForecast() {
     fetch(ForecastWeather)
       .then(function (response) {
@@ -164,6 +164,7 @@ function weathercast(lat, lon) {
     "&lon=" +
     lon +
     "&appid=5082e4062959ff23200dac304c5cf020";
+  //function calls the current weather
   function getWeather() {
     fetch(currentWeather)
       .then(function (response) {
@@ -213,17 +214,14 @@ let somethingelse = JSON.parse(something);
 function displaySaveCast() {
   somethingelse.forEach(function (element) {
     var searchedCity = document.createElement("button");
-    searchedCity.type = "button";
-    searchedCity.id = "citybutton";
     searchedCity.textContent = element.fakeCity + "," + element.fakeState;
     var position = document.getElementById("savedcity");
     position.appendChild(searchedCity);
-    console.log(element);
+    searchedCity.addEventListener("click", function (event) {});
   });
 }
 displaySaveCast();
-// function to re display saved results
-function searchSaveCast() {}
+
 // clear button to clear local storage
 clearbutton.addEventListener("click", function (event) {
   localStorage.removeItem("list");
