@@ -115,6 +115,32 @@ function weathercast(lat, lon) {
           " weather: " + data.list[30].weather[0].main;
         cityForecast120weather5.textContent =
           " weather: " + data.list[38].weather[0].main;
+        //icon
+        var link24 = document.getElementById("link24");
+        var link48 = document.getElementById("link48");
+        var link72 = document.getElementById("link72");
+        var link96 = document.getElementById("link96");
+        var link120 = document.getElementById("link120");
+        link24.src =
+          "http://openweathermap.org/img/wn/" +
+          data.list[6].weather[0].icon +
+          "@2x.png ";
+        link48.src =
+          "http://openweathermap.org/img/wn/" +
+          data.list[14].weather[0].icon +
+          "@2x.png ";
+        link72.src =
+          "http://openweathermap.org/img/wn/" +
+          data.list[22].weather[0].icon +
+          "@2x.png ";
+        link96.src =
+          "http://openweathermap.org/img/wn/" +
+          data.list[30].weather[0].icon +
+          "@2x.png ";
+        link120.src =
+          "http://openweathermap.org/img/wn/" +
+          data.list[38].weather[0].icon +
+          "@2x.png ";
         // wind speed
         var cityForecast24wind1 = document.getElementById("cityForecast24wind");
         var cityForecast48wind2 = document.getElementById("cityForecast48wind");
@@ -174,12 +200,17 @@ function weathercast(lat, lon) {
         console.log(data);
         var cityCurrent = document.getElementById("cityCurrent");
         var weatherCurrent = document.getElementById("weatherCurrent");
+        var linkCurrent = document.getElementById("linkCurrent");
         var tempCurrent = document.getElementById("tempCurrent");
         var humidityCurrent = document.getElementById("windCurrent");
         var windspeedCurrent = document.getElementById("humidityCurrent");
 
         cityCurrent.textContent = data.name;
         weatherCurrent.textContent = "Conditions: " + data.weather[0].main;
+        linkCurrent.src =
+          "http://openweathermap.org/img/wn/" +
+          data.weather[0].icon +
+          "@2x.png ";
         tempCurrent.textContent = "Temperature: " + data.main.temp;
         humidityCurrent.textContent = "Humidity: " + data.main.humidity;
         windspeedCurrent.textContent = "WindSpeed: " + data.wind.speed;
@@ -247,3 +278,8 @@ clearbutton.addEventListener("click", function (event) {
   localStorage.removeItem("list");
   location.reload();
 });
+// function for calling the icons
+function iconWeather(data) {
+  let iconWeather =
+    "http://openweathermap.org/img/wn/" + data.weather.icon + "@2x.png ";
+}
