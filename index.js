@@ -56,7 +56,7 @@ function weathercast(lat, lon) {
       .then(function (data) {
         console.log(data);
         let forecastCityName = document.getElementById("forecastCityName");
-        forecastCityName.textContent = cityform + " , " + stateform;
+        forecastCityName.textContent = data.city.name;
         // date
         var cityForecastdate24 = document.getElementById("cityForecastdate24");
         var cityForecastdate48 = document.getElementById("cityForecastdate48");
@@ -210,14 +210,34 @@ currentTime();
 // Passing code from saveCast to displaySaveCast
 something = localStorage.getItem("list");
 let somethingelse = JSON.parse(something);
-
+// displays searched city, enables click function on them to call the weather patterns again.
 function displaySaveCast() {
   somethingelse.forEach(function (element) {
     var searchedCity = document.createElement("button");
     searchedCity.textContent = element.fakeCity + "," + element.fakeState;
     var position = document.getElementById("savedcity");
     position.appendChild(searchedCity);
-    searchedCity.addEventListener("click", function (event) {});
+    searchedCity.addEventListener("click", function (event) {
+      getSavedLatLon =
+        "http://api.openweathermap.org/geo/1.0/direct?q=" +
+        element.fakeCity +
+        "," +
+        element.fakeState +
+        ",US&limit=5&appid=5082e4062959ff23200dac304c5cf020";
+      function getLatLonFunc() {
+        fetch(getSavedLatLon)
+          .then(function (reponse) {
+            return reponse.json();
+          })
+          .then(function (data) {
+            console.log(data);
+            lat = data[0].lat;
+            lon = data[0].lon;
+            weathercast(lat, lon);
+          });
+      }
+      getLatLonFunc();
+    });
   });
 }
 displaySaveCast();
