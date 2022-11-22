@@ -19,7 +19,7 @@ ElSubmit.addEventListener("click", function (event) {
 
   // Lat Lon from city state, calls main func "weathercast" to populate the page
   getLatLon =
-    "http://api.openweathermap.org/geo/1.0/direct?q=" +
+    "https://api.openweathermap.org/geo/1.0/direct?q=" +
     cityform +
     "," +
     stateform +
@@ -42,7 +42,7 @@ ElSubmit.addEventListener("click", function (event) {
 // Main Function to populate page, variable followed by its fetch function
 function weathercast(lat, lon) {
   let ForecastWeather =
-    "http://api.openweathermap.org/data/2.5/forecast?lat=" +
+    "https://api.openweathermap.org/data/2.5/forecast?lat=" +
     lat +
     "&lon=" +
     lon +
@@ -122,23 +122,23 @@ function weathercast(lat, lon) {
         var link96 = document.getElementById("link96");
         var link120 = document.getElementById("link120");
         link24.src =
-          "http://openweathermap.org/img/wn/" +
+          "https://openweathermap.org/img/wn/" +
           data.list[6].weather[0].icon +
           "@2x.png ";
         link48.src =
-          "http://openweathermap.org/img/wn/" +
+          "https://openweathermap.org/img/wn/" +
           data.list[14].weather[0].icon +
           "@2x.png ";
         link72.src =
-          "http://openweathermap.org/img/wn/" +
+          "https://openweathermap.org/img/wn/" +
           data.list[22].weather[0].icon +
           "@2x.png ";
         link96.src =
-          "http://openweathermap.org/img/wn/" +
+          "https://openweathermap.org/img/wn/" +
           data.list[30].weather[0].icon +
           "@2x.png ";
         link120.src =
-          "http://openweathermap.org/img/wn/" +
+          "https://openweathermap.org/img/wn/" +
           data.list[38].weather[0].icon +
           "@2x.png ";
         // wind speed
@@ -208,7 +208,7 @@ function weathercast(lat, lon) {
         cityCurrent.textContent = data.name;
         weatherCurrent.textContent = "Conditions: " + data.weather[0].main;
         linkCurrent.src =
-          "http://openweathermap.org/img/wn/" +
+          "https://openweathermap.org/img/wn/" +
           data.weather[0].icon +
           "@2x.png ";
         tempCurrent.textContent = "Temperature: " + data.main.temp;
@@ -250,7 +250,7 @@ function displaySaveCast() {
     position.appendChild(searchedCity);
     searchedCity.addEventListener("click", function (event) {
       getSavedLatLon =
-        "http://api.openweathermap.org/geo/1.0/direct?q=" +
+        "https://api.openweathermap.org/geo/1.0/direct?q=" +
         element.fakeCity +
         "," +
         element.fakeState +
@@ -281,5 +281,5 @@ clearbutton.addEventListener("click", function (event) {
 // function for calling the icons
 function iconWeather(data) {
   let iconWeather =
-    "http://openweathermap.org/img/wn/" + data.weather.icon + "@2x.png ";
+    "https://openweathermap.org/img/wn/" + data.weather.icon + "@2x.png ";
 }
