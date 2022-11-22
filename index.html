@@ -4,56 +4,67 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
     <title>My Weather Creation</title>
   </head>
   <body>
-    <h1>Weather!</h1>
-    <form id="form">
-      <input type="text" id="city" placeholder="Enter City" />
-      <input type="text" id="state" placeholder="Enter State" />
-      <button type="button" id="submit">Get Weather!</button>
-    </form>
-    <h2 id="Current">Current Weather for:</h2>
-    <h3 id="cityCurrent"></h3>
-    <p id="weatherCurrent"></p>
-    <img id="linkCurrent" src="" alt="Current Conditions" />
-    <p id="tempCurrent"></p>
-    <p id="windCurrent"></p>
-    <p id="humidityCurrent"></p>
-    <h2 id="Forecast">Forecast for:</h2>
-    <h3 id="forecastCityName"></h3>
-    <h4 id="cityForecastdate24"></h4>
-    <p id="cityForecast24temp"></p>
-    <p id="cityForecast24weather"></p>
-    <img id="link24" src="" alt="24hour Conditions" />
-    <p id="cityForecast24wind"></p>
-    <p id="cityForecast24humid"></p>
-    <h4 id="cityForecastdate48"></h4>
-    <p id="cityForecast48temp"></p>
-    <p id="cityForecast48weather"></p>
-    <img id="link48" src="" alt="48hour Conditions" />
-    <p id="cityForecast48wind"></p>
-    <p id="cityForecast48humid"></p>
-    <h4 id="cityForecastdate72"></h4>
-    <p id="cityForecast72temp"></p>
-    <p id="cityForecast72weather"></p>
-    <img id="link72" src="" alt="72hour Conditions" />
-    <p id="cityForecast72wind"></p>
-    <p id="cityForecast72humid"></p>
-    <h4 id="cityForecastdate96"></h4>
-    <p id="cityForecast96temp"></p>
-    <p id="cityForecast96weather"></p>
-    <img id="link96" src="" alt="96hour Conditions" />
-    <p id="cityForecast96wind"></p>
-    <p id="cityForecast96humid"></p>
-    <h4 id="cityForecastdate120"></h4>
-    <p id="cityForecast120temp"></p>
-    <p id="cityForecast120weather"></p>
-    <img id="link120" src="" alt="120hour Conditions" />
-    <p id="cityForecast120wind"></p>
-    <p id="cityForecast120humid"></p>
-    <h2>Previous Searches:</h2>
-    <ul id="savedcity"></ul>
+    <header>
+      <h1>Weather!</h1>
+      <form id="form">
+        <input type="text" id="city" placeholder="Enter City" />
+        <input type="text" id="state" placeholder="Enter State" />
+        <button type="button" id="submit">Get Weather!</button>
+      </form>
+    </header>
+    <main>
+      <article>
+        <h2 id="Current">Current Weather for:</h2>
+        <h3 id="cityCurrent"></h3>
+        <p id="weatherCurrent"></p>
+        <img id="linkCurrent" src="" alt="Current Conditions" />
+        <p id="tempCurrent"></p>
+        <p id="windCurrent"></p>
+        <p id="humidityCurrent"></p>
+      </article>
+      <aside>
+        <h2 id="Forecast">Forecast for:</h2>
+        <h3 id="forecastCityName"></h3>
+        <h4 id="cityForecastdate24"></h4>
+        <p id="cityForecast24temp"></p>
+        <p id="cityForecast24weather"></p>
+        <img id="link24" src="" alt="24hour Conditions" />
+        <p id="cityForecast24wind"></p>
+        <p id="cityForecast24humid"></p>
+        <h4 id="cityForecastdate48"></h4>
+        <p id="cityForecast48temp"></p>
+        <p id="cityForecast48weather"></p>
+        <img id="link48" src="" alt="48hour Conditions" />
+        <p id="cityForecast48wind"></p>
+        <p id="cityForecast48humid"></p>
+        <h4 id="cityForecastdate72"></h4>
+        <p id="cityForecast72temp"></p>
+        <p id="cityForecast72weather"></p>
+        <img id="link72" src="" alt="72hour Conditions" />
+        <p id="cityForecast72wind"></p>
+        <p id="cityForecast72humid"></p>
+        <h4 id="cityForecastdate96"></h4>
+        <p id="cityForecast96temp"></p>
+        <p id="cityForecast96weather"></p>
+        <img id="link96" src="" alt="96hour Conditions" />
+        <p id="cityForecast96wind"></p>
+        <p id="cityForecast96humid"></p>
+        <h4 id="cityForecastdate120"></h4>
+        <p id="cityForecast120temp"></p>
+        <p id="cityForecast120weather"></p>
+        <img id="link120" src="" alt="120hour Conditions" />
+        <p id="cityForecast120wind"></p>
+        <p id="cityForecast120humid"></p>
+      </aside>
+      <footer>
+        <h2>Previous Searches:</h2>
+        <ul id="savedcity"></ul>
+      </footer>
+    </main>
     <button type="button" id="clearbutton">Clear Button</button>
   </body>
   <script src="/index.js"></script>
