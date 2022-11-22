@@ -25,3 +25,8 @@ main {
   margin-right: auto;
   width: 10%;
 }
+
+footer ul {
+  display: flex;
+  flex-direction: column;
+}
