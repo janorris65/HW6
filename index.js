@@ -38,6 +38,8 @@ ElSubmit.addEventListener("click", function (event) {
       });
   }
   getLatLonFunc();
+
+  displaySaveCast();
 });
 // Main Function to populate page, variable followed by its fetch function
 function weathercast(lat, lon) {
@@ -239,14 +241,19 @@ function currentTime() {
 }
 currentTime();
 // Passing code from saveCast to displaySaveCast
-something = localStorage.getItem("list");
-let somethingelse = JSON.parse(something);
+
 // displays searched city, enables click function on them to call the weather patterns again.
 function displaySaveCast() {
+  something = localStorage.getItem("list");
+  let somethingelse = JSON.parse(something);
+  var position = document.getElementById("savedcity");
+  while (position.firstChild) {
+    position.removeChild(position.firstChild);
+  }
   somethingelse.forEach(function (element) {
     var searchedCity = document.createElement("button");
     searchedCity.textContent = element.fakeCity + "," + element.fakeState;
-    var position = document.getElementById("savedcity");
+    position = document.getElementById("savedcity");
     position.appendChild(searchedCity);
     searchedCity.addEventListener("click", function (event) {
       getSavedLatLon =
@@ -271,12 +278,13 @@ function displaySaveCast() {
     });
   });
 }
-displaySaveCast();
+// displaySaveCast();
 
 // clear button to clear local storage
 clearbutton.addEventListener("click", function (event) {
   localStorage.removeItem("list");
   location.reload();
+  displaySaveCast();
 });
 // function for calling the icons
 function iconWeather(data) {
